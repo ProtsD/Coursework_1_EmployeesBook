@@ -44,17 +44,17 @@ public class Main {
         Employee[] employeesList;
         employeesBook.increaseSalariesInDepartment("2", 10);
         System.out.println("Department 2. Data of employees after salary increasing:");
-        employeesList = employeesBook.returnInDepartment("2");
+        employeesList = employeesBook.getEmployeesInDepartment("2");
         employeesBook.printWithoutDepartment(employeesList);
         System.out.println();
 
         System.out.println("Employees with salary under 450000:");
-        employeesList = employeesBook.returnWithSalaryUnder(450000);
+        employeesList = employeesBook.getEmployeesWithSalaryUnder(450000);
         employeesBook.printWithoutDepartment(employeesList);
         System.out.println();
 
         System.out.println("Employees with salary below 450000:");
-        employeesList = employeesBook.returnWithSalaryBelow(450000);
+        employeesList = employeesBook.getEmployeesWithSalaryBelow(450000);
         employeesBook.printWithoutDepartment(employeesList);
         System.out.println();
 
@@ -79,18 +79,18 @@ public class Main {
                 "ID5 salary: 440014.3 to 111111.0 \n" +
                 "ID6 department: 1 to 3 \n" +
                 "ID7 salary and department: 440024.2 to 222222.0 and 1 to 5");
-        Employee employee = employeesBook.returnEmployee("Иван5", "Иванович", "Иванов");
-        employeesBook.changeEmployeeSalaryOrDepartment(employee, 111111, null);
+        Employee employee = employeesBook.getEmployee("Иван5", "Иванович", "Иванов");
+        employeesBook.changeSalaryOrDepartment(employee, 111111, null);
 
-        employee = employeesBook.returnEmployee("Иван6", "Иванович", "Иванов");
-        employeesBook.changeEmployeeSalaryOrDepartment(employee, 0, "3");
+        employee = employeesBook.getEmployee("Иван6", "Иванович", "Иванов");
+        employeesBook.changeSalaryOrDepartment(employee, 0, "3");
 
-        employee = employeesBook.returnEmployee("Иван7", "Иванович", "Иванов");
-        employeesBook.changeEmployeeSalaryOrDepartment(employee, 222222, "5");
+        employee = employeesBook.getEmployee("Иван7", "Иванович", "Иванов");
+        employeesBook.changeSalaryOrDepartment(employee, 222222, "5");
         employeesBook.printEmployeesData();
         System.out.println();
 
         System.out.println("Complete data of employees by department:");
-        employeesBook.printSortedEmployees();
+        employeesBook.printByDepartmentGroup();
     }
 }

@@ -10,232 +10,32 @@ public class EmployeeBook {
 
     /////////////////////// first level of complexity - methods ////////////////////////
     public void printEmployeesData() {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            System.out.println(EmployeesBook[id]);
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            System.out.println(EmployeesBook[i]);
         }
-    }
-
-    public double calcTotalSalaries() {
-        double totalSalary = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            totalSalary += EmployeesBook[id].getSalary();
-        }
-        return totalSalary;
-    }
-
-    public Employee findEmplWithMinSalary() {
-        double minSalary = EmployeesBook[0].getSalary();
-        int employeeId = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (minSalary > EmployeesBook[id].getSalary()) {
-                minSalary = EmployeesBook[id].getSalary();
-                employeeId = id;
-            }
-        }
-        return EmployeesBook[employeeId];
-    }
-
-    public Employee findEmplWithMaxSalary() {
-        double maxSalary = EmployeesBook[0].getSalary();
-        int employeeId = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (maxSalary < EmployeesBook[id].getSalary()) {
-                maxSalary = EmployeesBook[id].getSalary();
-                employeeId = id;
-            }
-        }
-        return EmployeesBook[employeeId];
-    }
-
-    public double calcAverageSalary() {
-        double totalSalary = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            totalSalary += EmployeesBook[id].getSalary();
-        }
-        return totalSalary / EmployeesBook.length;
     }
 
     public void printAllEmployeesList() {
-        for (int id = 0; id < EmployeesBook.length; id++) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
             System.out.println(
-                    EmployeesBook[id].getFirstName() + " " +
-                            EmployeesBook[id].getMiddleName() + " " +
-                            EmployeesBook[id].getSecondName());
+                    EmployeesBook[i].getFirstName() + " " +
+                            EmployeesBook[i].getMiddleName() + " " +
+                            EmployeesBook[i].getSecondName());
         }
-    }
-
-    /////////////////////// second level of complexity - methods ////////////////////////
-    public void increaseAllEmplSalaries(int factor) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            EmployeesBook[id].setSalary(EmployeesBook[id].getSalary() * (factor + 100) / 100);
-        }
-    }
-
-    public Employee findEmplWithMinSalary(String department) {
-        double minSalary = EmployeesBook[0].getSalary();
-        int employeeId = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id].getDepartment().equals(department) && minSalary > EmployeesBook[id].getSalary()) {
-                minSalary = EmployeesBook[id].getSalary();
-                employeeId = id;
-            }
-        }
-        return EmployeesBook[employeeId];
-    }
-
-    public Employee findEmplWithMaxSalary(String department) {
-        double maxSalary = EmployeesBook[0].getSalary();
-        int employeeId = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id].getDepartment().equals(department) && maxSalary < EmployeesBook[id].getSalary()) {
-                maxSalary = EmployeesBook[id].getSalary();
-                employeeId = id;
-            }
-        }
-        return EmployeesBook[employeeId];
-    }
-
-    public double calcTotalSalaries(String department) {
-        double totalSalary = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id].getDepartment().equals(department)) {
-                totalSalary += EmployeesBook[id].getSalary();
-            }
-        }
-        return totalSalary;
-    }
-
-    public double calcAverageSalary(String department) {
-        double totalSalary = 0;
-        int numberEmployeesInDepartment = 0;
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id].getDepartment().equals(department)) {
-                totalSalary += EmployeesBook[id].getSalary();
-                numberEmployeesInDepartment++;
-            }
-        }
-        return totalSalary / numberEmployeesInDepartment;
-    }
-
-    public void increaseSalariesInDepartment(String department, int factor) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id].getDepartment().equals(department)) {
-                EmployeesBook[id].setSalary(EmployeesBook[id].getSalary() * (factor + 100) / 100);
-            }
-        }
-    }
-
-    public Employee[] returnInDepartment(String department) {
-        Employee[] Array = new Employee[EmployeesBook.length];
-        int employeeNumber = 0;
-        for (int i = 0; i < EmployeesBook.length; i++) {
-            if (EmployeesBook[i] == null) continue;
-            if (EmployeesBook[i].getDepartment().equals(department)){
-                Array[employeeNumber] = EmployeesBook[i];
-                employeeNumber++;
-            }
-        }
-        Array = Arrays.copyOf(Array, employeeNumber);
-        return Array;
-    }
-
-    public Employee[] returnWithSalaryUnder(double salary) {
-        Employee[] Array = new Employee[EmployeesBook.length];
-        int employeeNumber = 0;
-        for (int i = 0; i < EmployeesBook.length; i++) {
-            if (EmployeesBook[i] == null) continue;
-            if (EmployeesBook[i].getSalary() > salary){
-            Array[employeeNumber] = EmployeesBook[i];
-            employeeNumber++;
-            }
-        }
-        Array = Arrays.copyOf(Array, employeeNumber);
-        return Array;
-    }
-
-    public Employee[] returnWithSalaryBelow(double salary) {
-        Employee[] Array = new Employee[EmployeesBook.length];
-        int employeeNumber = 0;
-        for (int i = 0; i < EmployeesBook.length; i++) {
-            if (EmployeesBook[i] == null) continue;
-            if (EmployeesBook[i].getSalary() < salary){
-                Array[employeeNumber] = EmployeesBook[i];
-                employeeNumber++;
-            }
-        }
-        Array = Arrays.copyOf(Array, employeeNumber);
-        return Array;
     }
 
     public void printWithoutDepartment(Employee[] employees) {
-        for (int id = 0; id < employees.length; id++) {
+        for (int i = 0; i < employees.length; i++) {
             System.out.println(
-                    employees[id].getId() + " " +
-                            employees[id].getFirstName() + " " +
-                            employees[id].getMiddleName() + " " +
-                            employees[id].getSecondName() + " " +
-                            employees[id].getSalary());
-        }
-    }
-    /////////////////////// third level of complexity - methods ////////////////////////
-
-    public void addEmployee(Employee employee) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id] == null) {
-                EmployeesBook[id] = employee;
-                return;
-            }
+                    employees[i].getId() + " " +
+                            employees[i].getFirstName() + " " +
+                            employees[i].getMiddleName() + " " +
+                            employees[i].getSecondName() + " " +
+                            employees[i].getSalary());
         }
     }
 
-    public void deleteEmployee(String firstName, String middleName, String secondName) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id] == null) {
-                continue;
-            }
-            if (EmployeesBook[id].getFirstName() == firstName &&
-                    EmployeesBook[id].getMiddleName() == middleName &&
-                    EmployeesBook[id].getSecondName() == secondName) {
-                EmployeesBook[id] = null;
-            }
-        }
-    }
-
-    public void deleteEmployee(int employeeId) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id] == null) {
-                continue;
-            }
-            if (EmployeesBook[id].getId() == employeeId) {
-                EmployeesBook[id] = null;
-            }
-        }
-    }
-
-    public Employee returnEmployee(String firstName, String middleName, String secondName) {
-        for (int id = 0; id < EmployeesBook.length; id++) {
-            if (EmployeesBook[id] == null) {
-                continue;
-            }
-            if (EmployeesBook[id].getFirstName() == firstName &&
-                    EmployeesBook[id].getMiddleName() == middleName &&
-                    EmployeesBook[id].getSecondName() == secondName) {
-                return EmployeesBook[id];
-            }
-        }
-        return null;
-    }
-
-    public void changeEmployeeSalaryOrDepartment(Employee employee, double salary, String department) {
-        if (salary != 0) {
-            employee.setSalary(salary);
-        }
-        if (department != null) {
-            employee.setDepartment(department);
-        }
-    }
-
-    public void printSortedEmployees() {
+    public void printByDepartmentGroup() {
         String[] ArrayOfDepartments = extractArrayOfDepartments();
         Arrays.sort(ArrayOfDepartments);
         ArrayOfDepartments = deleteDuplicates(ArrayOfDepartments);
@@ -248,6 +48,204 @@ public class EmployeeBook {
                     System.out.println(EmployeesBook[j]);
                 }
             }
+        }
+    }
+
+    public double calcTotalSalaries() {
+        double totalSalary = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            totalSalary += EmployeesBook[i].getSalary();
+        }
+        return totalSalary;
+    }
+
+    public double calcTotalSalaries(String department) {
+        double totalSalary = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i].getDepartment().equals(department)) {
+                totalSalary += EmployeesBook[i].getSalary();
+            }
+        }
+        return totalSalary;
+    }
+
+    public Employee findEmplWithMinSalary() {
+        double minSalary = EmployeesBook[0].getSalary();
+        int employeeId = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (minSalary > EmployeesBook[i].getSalary()) {
+                minSalary = EmployeesBook[i].getSalary();
+                employeeId = i;
+            }
+        }
+        return EmployeesBook[employeeId];
+    }
+
+    public Employee findEmplWithMinSalary(String department) {
+        double minSalary = EmployeesBook[0].getSalary();
+        int employeeId = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i].getDepartment().equals(department) && minSalary > EmployeesBook[i].getSalary()) {
+                minSalary = EmployeesBook[i].getSalary();
+                employeeId = i;
+            }
+        }
+        return EmployeesBook[employeeId];
+    }
+
+    public Employee findEmplWithMaxSalary() {
+        double maxSalary = EmployeesBook[0].getSalary();
+        int employeeId = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (maxSalary < EmployeesBook[i].getSalary()) {
+                maxSalary = EmployeesBook[i].getSalary();
+                employeeId = i;
+            }
+        }
+        return EmployeesBook[employeeId];
+    }
+
+    public Employee findEmplWithMaxSalary(String department) {
+        double maxSalary = EmployeesBook[0].getSalary();
+        int employeeId = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i].getDepartment().equals(department) && maxSalary < EmployeesBook[i].getSalary()) {
+                maxSalary = EmployeesBook[i].getSalary();
+                employeeId = i;
+            }
+        }
+        return EmployeesBook[employeeId];
+    }
+
+    public double calcAverageSalary() {
+        double totalSalary = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            totalSalary += EmployeesBook[i].getSalary();
+        }
+        return totalSalary / EmployeesBook.length;
+    }
+
+    public double calcAverageSalary(String department) {
+        double totalSalary = 0;
+        int numberEmployeesInDepartment = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i].getDepartment().equals(department)) {
+                totalSalary += EmployeesBook[i].getSalary();
+                numberEmployeesInDepartment++;
+            }
+        }
+        return totalSalary / numberEmployeesInDepartment;
+    }
+
+    public void increaseAllEmplSalaries(int factor) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            EmployeesBook[i].setSalary(EmployeesBook[i].getSalary() * (factor + 100) / 100);
+        }
+    }
+
+    public void increaseSalariesInDepartment(String department, int factor) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i].getDepartment().equals(department)) {
+                EmployeesBook[i].setSalary(EmployeesBook[i].getSalary() * (factor + 100) / 100);
+            }
+        }
+    }
+
+    public Employee[] getEmployeesInDepartment(String department) {
+        Employee[] Array = new Employee[EmployeesBook.length];
+        int employeeNumber = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) continue;
+            if (EmployeesBook[i].getDepartment().equals(department)) {
+                Array[employeeNumber] = EmployeesBook[i];
+                employeeNumber++;
+            }
+        }
+        Array = Arrays.copyOf(Array, employeeNumber);
+        return Array;
+    }
+
+    public Employee[] getEmployeesWithSalaryUnder(double salary) {
+        Employee[] Array = new Employee[EmployeesBook.length];
+        int employeeNumber = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) continue;
+            if (EmployeesBook[i].getSalary() > salary) {
+                Array[employeeNumber] = EmployeesBook[i];
+                employeeNumber++;
+            }
+        }
+        Array = Arrays.copyOf(Array, employeeNumber);
+        return Array;
+    }
+
+    public Employee[] getEmployeesWithSalaryBelow(double salary) {
+        Employee[] Array = new Employee[EmployeesBook.length];
+        int employeeNumber = 0;
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) continue;
+            if (EmployeesBook[i].getSalary() < salary) {
+                Array[employeeNumber] = EmployeesBook[i];
+                employeeNumber++;
+            }
+        }
+        Array = Arrays.copyOf(Array, employeeNumber);
+        return Array;
+    }
+
+    public void addEmployee(Employee employee) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) {
+                EmployeesBook[i] = employee;
+                return;
+            }
+        }
+    }
+
+    public void deleteEmployee(String firstName, String middleName, String secondName) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) {
+                continue;
+            }
+            if (EmployeesBook[i].getFirstName() == firstName &&
+                    EmployeesBook[i].getMiddleName() == middleName &&
+                    EmployeesBook[i].getSecondName() == secondName) {
+                EmployeesBook[i] = null;
+            }
+        }
+    }
+
+    public void deleteEmployee(int employeeId) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) {
+                continue;
+            }
+            if (EmployeesBook[i].getId() == employeeId) {
+                EmployeesBook[i] = null;
+            }
+        }
+    }
+
+    public Employee getEmployee(String firstName, String middleName, String secondName) {
+        for (int i = 0; i < EmployeesBook.length; i++) {
+            if (EmployeesBook[i] == null) {
+                continue;
+            }
+            if (EmployeesBook[i].getFirstName() == firstName &&
+                    EmployeesBook[i].getMiddleName() == middleName &&
+                    EmployeesBook[i].getSecondName() == secondName) {
+                return EmployeesBook[i];
+            }
+        }
+        return null;
+    }
+
+    public void changeSalaryOrDepartment(Employee employee, double salary, String department) {
+        if (salary != 0) {
+            employee.setSalary(salary);
+        }
+        if (department != null) {
+            employee.setDepartment(department);
         }
     }
 
@@ -273,6 +271,5 @@ public class EmployeeBook {
             }
         }
         return Array = Arrays.copyOf(Array, j + 1);
-
     }
 }
